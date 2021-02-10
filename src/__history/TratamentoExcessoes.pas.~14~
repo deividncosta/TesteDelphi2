@@ -1,0 +1,79 @@
+unit TratamentoExcessoes;
+
+interface
+
+uses
+  System.SysUtils, System.Classes;
+
+type
+  TException = class
+    private
+      FLogFile: String;
+    public
+      constructor Create;
+      procedure TratarException(Sender: TObject; E: Exception);
+      procedure GravarLog(Value: String);
+  end;
+
+implementation
+
+uses
+  Forms, Vcl.Dialogs, Winapi.Windows;
+
+{ TException }
+
+constructor TException.Create;
+begin
+  FLogFile := ChangeFileExt(ParamStr(0),'.log');
+  Application.OnException := TratarException;
+end;
+
+procedure TException.GravarLog(Value: String);
+var
+  txtLog: TextFile;
+begin
+  AssignFile(txtLog, FLogFile);
+  if FileExists(FLogFile) then
+    Append(txtLog)
+  else
+    Rewrite(txtLog);
+  Writeln(txtLog, Value);
+  CloseFile(txtLog);
+end;
+
+procedure TException.TratarException(Sender: TObject; E: Exception);
+begin
+  if E.Message <> '' then
+  begin
+    if TComponent(Sender) is TForm then
+    begin
+      GravarLog('');
+      GravarLog('Data: ' + FormatDateTime('DD/MM/YYYY HH:MM:SS', Now));
+      GravarLog('Form: ' + TForm(Sender).Name);
+      GravarLog('Caption: ' + TForm(Sender).Caption);
+      GravarLog('ClassName: ' + E.ClassName);
+      GravarLog('Erro: ' + E.Message)
+    end
+    else
+    begin
+      GravarLog('');
+      GravarLog('Data: ' + FormatDateTime('DD/MM/YYYY HH:MM:SS', Now));
+      GravarLog('Form: ' + TForm(TComponent(Sender).Owner).Name);
+      GravarLog('Caption: ' + TForm(TComponent(Sender).Owner).Caption);
+      GravarLog('ClassName: ' + E.ClassName);
+      GravarLog('Erro: ' + E.Message)
+    end;
+  end;
+  Application.MessageBox(PChar('Erro: ' + E.Message + #13 + 'Verifique arquivo log'),'Aplicativo Teste Deivid Costa', MB_ICONERROR);
+end;
+
+var
+  MyException: TException;
+
+initialization
+  MyException := TException.Create;
+
+finalization
+  MyException.Free;
+
+end.

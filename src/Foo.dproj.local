@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2021/02/10 11:12:05.351,=C:\Users\davis\Desktop\appmanutencao-master\src\Unit1.pas</Transaction>
+    <Transaction>2021/02/10 11:12:22.366,C:\Users\davis\Desktop\appmanutencao-master\src\TratamentoExcessoes.pas=C:\Users\davis\Desktop\appmanutencao-master\src\Unit1.pas</Transaction>
+    <Transaction>2021/02/10 11:45:39.075,=C:\Users\davis\Desktop\appmanutencao-master\src\Unit1.pas</Transaction>
+    <Transaction>2021/02/10 11:45:50.199,=C:\Users\davis\Desktop\appmanutencao-master\src\Unit1.pas</Transaction>
+    <Transaction>2021/02/10 11:46:07.007,C:\Users\davis\Desktop\appmanutencao-master\src\Threads.pas=C:\Users\davis\Desktop\appmanutencao-master\src\Unit1.pas</Transaction>
+    <Transaction>2021/02/10 11:46:07.007,C:\Users\davis\Desktop\appmanutencao-master\src\Threads.dfm=C:\Users\davis\Desktop\appmanutencao-master\src\Unit1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

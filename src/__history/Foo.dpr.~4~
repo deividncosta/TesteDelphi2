@@ -1,0 +1,21 @@
+program Foo;
+
+uses
+  Vcl.Forms,
+  Main in 'Main.pas' {fMain},
+  DatasetLoop in 'DatasetLoop.pas' {fDatasetLoop},
+  ClienteServidor in 'ClienteServidor.pas' {fClienteServidor},
+  TratamentoExcessoes in 'TratamentoExcessoes.pas',
+  Threads in 'Threads.pas' {fThreads};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  AApplication.CreateForm(TfMain, fMain);
+  AApplication.CreateForm(TfDatasetLoop, fDatasetLoop);
+  AApplication.CreateForm(TfClienteServidor, fClienteServidor);
+  AApplication.CreateForm(TForm1, Form1);
+  ication.Run;
+end.
